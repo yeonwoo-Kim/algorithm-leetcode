@@ -14,24 +14,20 @@ class Solution {
     }
     
     private static int bfs(int[][] grid, int xValue, int yValue) {
-        Queue<Position> q = new LinkedList<>();
-        q.add(new Position(xValue, yValue));
         int cnt = 0;
-        while (!q.isEmpty()) {
-            Position position = q.poll();
-            int x = position.x;
-            int y = position.y;
-                // 주변에 1인 것들 개수 카운트
-                for (int i = 0; i < move.length; i++) {
-                    int nowX = x + move[i][0];
-                    int nowY = y + move[i][1];
+        Position position = new Position(xValue, yValue);
+        int x = position.x;
+        int y = position.y;
+        // 주변에 1인 것들 개수 카운트
+        for (int i = 0; i < move.length; i++) {
+            int nowX = x + move[i][0];
+            int nowY = y + move[i][1];
 
-                    if (chk(nowX, nowY, grid.length, grid[0].length)) {
-                        if (grid[nowX][nowY] == 1) {
-                            cnt++;
-                        }
-                    }
+            if (chk(nowX, nowY, grid.length, grid[0].length)) {
+                if (grid[nowX][nowY] == 1) {
+                    cnt++;
                 }
+            }
         }
         return 4 - cnt;
     }
